@@ -264,9 +264,10 @@ def aviso_lanzamiento() -> str:
     if CHECKOUT_ACTIVO:
         return ""
     return f"""<div class="wrap"><div class="aviso aviso-amarillo">
-  <p><strong>Tienda en prelanzamiento.</strong> Los 8 diseños están definidos y el catálogo cerrado,
-  pero <strong>todavía no hemos subido los imprimibles</strong>: no vamos a vender una camiseta sin arte.
-  Déjanos tu email en cualquier ficha y te avisamos el día que se pueda comprar de verdad.</p>
+  <p><strong>Tienda en prelanzamiento.</strong> Los 8 diseños ya están compuestos y listos para imprimir
+  (míralos en el catálogo), pero todavía no están cargados en la tienda de pago. No abrimos las compras
+  hasta que un pedido se pueda fabricar y enviar de verdad. Déjanos tu email en cualquier ficha y te
+  avisamos el día que se pueda comprar.</p>
 </div></div>"""
 
 
