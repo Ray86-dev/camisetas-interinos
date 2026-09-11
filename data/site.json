@@ -1,6 +1,9 @@
 {
   "marca": "Llamamiento 23:59",
-  "marca_alt_consideradas": ["Lista de espera", "Interinidad Canaria"],
+  "marca_alt_consideradas": [
+    "Lista de espera",
+    "Interinidad Canaria"
+  ],
   "lema": "Merch de tribu para quien vive del llamamiento",
   "claim_home": "Camisetas, totes y tazas para la gente que sabe lo que es mirar el móvil a las 23:59.",
   "idioma": "es-ES",
@@ -9,7 +12,7 @@
   "url_publicada": "https://ray86-dev.github.io/camisetas-interinos/",
   "url_tienda_pod": "",
   "checkout_activo": false,
-  "email_contacto": "hola@PENDIENTE-CONFIRMAR",
+  "email_contacto": "rayco86@protonmail.com",
   "respuesta_horas": 24,
   "responsable": {
     "nombre": "[NOMBRE Y APELLIDOS]",
@@ -19,7 +22,10 @@
     "pais": "España"
   },
   "plazos": {
-    "produccion_dias": [3, 5],
+    "produccion_dias": [
+      3,
+      5
+    ],
     "canarias": {
       "min_dias": 6,
       "max_dias": 14,
