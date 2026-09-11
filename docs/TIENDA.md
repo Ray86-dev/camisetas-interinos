@@ -11,6 +11,9 @@ Documento vivo: cada decisión nueva se añade aquí con su fecha.
 - Repositorio: https://github.com/ray86-dev/camisetas-interinos (público, rama `gh-pages` sirve el contenido generado; `master` es el código fuente)
 - Estado: **prelanzamiento honesto**. La web está en vivo, el catálogo de 24 productos (8 diseños × 3) está completo y las fichas funcionan, pero **no hay botón de compra** porque los imprimibles no existen todavía y no se vende un diseño vacío.
 - Los 3 productos placeholder «PRÓXIMAMENTE» están solo en `/_borrador/` (noindex, fuera del menú y del sitemap), tal como pedía el plan.
+- **Tienda POD (cuenta creada el 11-09-2026)**: panel en https://admin.fourthwall.com/store/ray-mga/, escaparate en `https://ray-mga-shop.fourthwall.com` (hoy protegido con contraseña: modo prelanzamiento hasta pulsar «Go live»). Detalle y checklist de configuración en `docs/PANEL_FOURTHWALL.md`.
+- Recursos de marca generados para el panel y las redes: `assets/img/marca/logo-cuadrado.png` (1000×1000), `banner-hero.png` (1600×900), `banner-canal.png` (1280×720), `favicon.png`. Se regeneran con `python scripts/brand_assets.py`.
+
 
 ## 2. Decisión de stack
 
