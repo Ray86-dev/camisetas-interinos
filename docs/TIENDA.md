@@ -134,3 +134,11 @@ Cuando lleguen, el registro se hace en `auth.fourthwall.com` (email + contraseñ
 3. Se pegan las URLs en `data/disenos.json`, se marca `estado: listo` y se ejecuta `python build.py --check && bash scripts/publish.sh`.
 4. Se apunta el dominio según `DNS.md` (opción A: al escaparate; opción B: a la tienda POD).
 5. Se hace un pedido de prueba real de 1 € con el producto `TEST-NO-COMPRAR` y se documenta el resultado aquí.
+
+## 11. Arte de los 8 diseños (11-09-2026)
+
+Los 8 diseños están compuestos y listos para imprimir en `designs/<slug>/` (7 archivos cada uno),
+generados con `scripts/disenos.py` (tipografía real + geometría vectorial a 300 dpi) y validados con
+`scripts/qa_disenos.py` (32 archivos revisados: dpi, transparencia, márgenes ≥ 3 mm y sin sangrado).
+Cada diseño lleva **dos variantes de color**: oscura (prenda oscura) y clara (tote crudo, taza blanca).
+El catálogo de la web ya muestra el arte real en las 24 fichas. Detalles y diagnóstico de Fooocus: `docs/ARTE.md`.

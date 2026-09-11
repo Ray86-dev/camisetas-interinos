@@ -1,7 +1,9 @@
-# /designs — arte final (lo produce el humano)
+# /designs — arte final
 
-Esta carpeta está **vacía de arte** a propósito en la fecha de arranque: los PNG los genera el humano
-con Fooocus / ComfyUI / Gemini siguiendo los prompts de esta carpeta.
+**Estado actual: los 8 diseños ya están compuestos** (los 7 archivos de cada carpeta) por
+`scripts/disenos.py`, con tipografía real y geometría vectorial, y validados por `scripts/qa_disenos.py`.
+El humano puede sustituir cualquiera de ellos por su versión de Gemini o Fooocus sobrescribiendo los
+mismos archivos: ver `docs/ARTE.md`.
 
 ## Convención de nombres
 

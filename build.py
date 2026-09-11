@@ -106,6 +106,13 @@ def producto_id(d: dict, p: dict) -> str:
     return f"{p['id']}-{d['slug']}"
 
 
+def arte_web(slug: str) -> str | None:
+    """Vista previa del arte real, si el humano (o el script de composición) ya la dejó."""
+    if (ROOT / "designs" / slug / "mockup-web.webp").exists():
+        return f"/assets/img/diseno/{slug}.webp"
+    return None
+
+
 def crear_matriz() -> list[dict]:
     """8 diseños × 3 productos = 24 fichas de producto."""
     fichas = []
@@ -319,10 +326,17 @@ def tarjeta_producto(ficha: dict) -> str:
         if ficha["disponible"]
         else '<span class="tag">Próximamente</span>'
     )
+    arte = arte_web(d["slug"])
+    if arte:
+        img = f'<img src="{ruta(arte)}" alt="Diseño «{esc(d["titulo"])}» para {esc(p["nombre"].lower())}" width="1200" height="1500" loading="lazy">'
+        etiqueta_arte = '<span class="tag tag-azul mono">Arte listo</span>'
+    else:
+        img = f'<img src="{ruta("/assets/img/" + ficha["id"] + ".svg")}" alt="Placeholder del diseño «{esc(d["titulo"])}» sobre {esc(p["nombre"].lower())}" width="800" height="1000" loading="lazy">'
+        etiqueta_arte = ""
     return f"""<article class="card" data-tipo-producto="{p['id']}">
-  <div class="card-img"><img src="{ruta('/assets/img/' + ficha['id'] + '.svg')}" alt="Placeholder del diseño «{esc(d['titulo'])}» sobre {esc(p['nombre'].lower())}" width="800" height="1000" loading="lazy"></div>
+  <div class="card-img">{img}</div>
   <div class="card-body">
-    <div>{estado} <span class="tag mono">{esc(p['nombre'])}</span></div>
+    <div>{estado} {etiqueta_arte} <span class="tag mono">{esc(p['nombre'])}</span></div>
     <h3><a href="{ruta(ficha['url'])}">{esc(d['titulo'])}</a></h3>
     <p class="small mono">{esc(d['texto_camiseta'].replace(chr(10), ' / '))}</p>
     <p class="precio">{eur(ficha['precio'])} <small>IVA incluido · envío calculado al pagar</small></p>
@@ -463,14 +477,21 @@ def pagina_producto(ficha: dict) -> str:
         compra = f"""<a class="btn btn-block" href="{mailto(f"Avísame: {ficha['titulo']}", 'Quiero que me aviséis cuando este producto se pueda comprar.')}">Avísame cuando esté</a>
         <p class="small">Este producto aún no se puede comprar: el imprimible no está terminado y no vendemos aire.</p>"""
 
+    arte = arte_web(d["slug"])
+    if arte:
+        bloque_imagen = f"""<div class="ficha-img"><img src="{ruta(arte)}" alt="Diseño «{esc(d['titulo'])}» para {esc(p['nombre'].lower())}" width="1200" height="1500"></div>
+        <p class="small">Vista previa del arte que se imprime. El mockup oficial del fabricante lo genera la tienda al crear el producto: no enseñamos fotos que no existan.</p>"""
+    else:
+        bloque_imagen = f"""<div class="ficha-img"><img src="{ruta('/assets/img/' + ficha['id'] + '.svg')}" alt="Placeholder del diseño «{esc(d['titulo'])}» sobre {esc(p['nombre'].lower())}" width="800" height="1000"></div>
+        <p class="small">Imagen de marcador de posición. Cuando el imprimible exista, esta ficha muestra el mockup oficial del fabricante.</p>"""
+
     cuerpo = f"""
 <section>
   <div class="wrap">
     <p class="small"><a href="{ruta('/catalogo/')}">Catálogo</a> / {esc(p['nombre'])} / {esc(d['titulo'])}</p>
     <div class="ficha">
       <div>
-        <div class="ficha-img"><img src="{ruta('/assets/img/' + ficha['id'] + '.svg')}" alt="Placeholder del diseño «{esc(d['titulo'])}» sobre {esc(p['nombre'].lower())}" width="800" height="1000"></div>
-        <p class="small">Imagen de marcador de posición. Cuando el imprimible exista, esta ficha muestra el mockup oficial del fabricante.</p>
+        {bloque_imagen}
       </div>
       <div>
         <h1>{esc(d['titulo'])}</h1>
@@ -790,6 +811,14 @@ def copiar_estaticos() -> None:
     if (ROOT / "static" / "img" / "marca").exists():
         shutil.copytree(ROOT / "static" / "img" / "marca", DIST / "assets" / "img" / "marca")
 
+    # Vistas previas del arte real (si ya existen las composiciones en /designs)
+    destino_diseno = DIST / "assets" / "img" / "diseno"
+    for d in DISENOS:
+        origen = ROOT / "designs" / d["slug"] / "mockup-web.webp"
+        if origen.exists():
+            destino_diseno.mkdir(parents=True, exist_ok=True)
+            shutil.copy(origen, destino_diseno / f"{d['slug']}.webp")
+
     for ficha in FICHAS:
         (DIST / "assets" / "img" / f"{ficha['id']}.svg").write_text(svg_placeholder(ficha), encoding="utf-8")
     (DIST / "assets" / "img" / "og.svg").write_text(svg_og(), encoding="utf-8")
@@ -930,7 +959,7 @@ def validar() -> None:
             limpio = limpio.split("#")[0]
             if limpio in ("", "/"):
                 continue
-            if limpio.endswith((".css", ".js", ".svg", ".png", ".json", ".txt", ".xml", ".ico")):
+            if limpio.endswith((".css", ".js", ".svg", ".png", ".webp", ".jpg", ".json", ".txt", ".xml", ".ico")):
                 if not (DIST / limpio.lstrip("/")).exists():
                     errores.append(f"{rel}: recurso inexistente {limpio}")
             elif limpio.endswith(".html"):
