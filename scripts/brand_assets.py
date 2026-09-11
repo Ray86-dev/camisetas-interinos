@@ -75,19 +75,31 @@ def logo_cuadrado() -> None:
 
 
 def banner_hero(ancho: int, alto: int, nombre: str, subtitulo: str, linea2: str) -> None:
-    from PIL import Image, ImageDraw
+    from PIL import Image, ImageDraw, ImageFont
 
     img = Image.new("RGB", (ancho, alto), AZUL)
     d = ImageDraw.Draw(img)
     escala = ancho / 1600
+    margen = int(80 * escala)
+    disponible = ancho - 2 * margen
+
+    def fuente_ajustada(texto: str, ideal: int, rutas: list[str]):
+        for tam in range(ideal, 12, -4):
+            f = cargar_fuente(rutas, tam)
+            caja = d.textbbox((0, 0), texto, font=f)
+            if caja[2] - caja[0] <= disponible:
+                return f
+        return ImageFont.load_default()
+
     d.rectangle([0, alto - int(22 * escala), ancho, alto], fill=ROJO)
     f_top = cargar_fuente(FUENTE_MONO, int(46 * escala))
     f_big = cargar_fuente(FUENTES, int(190 * escala))
-    f_sub = cargar_fuente(FUENTES, int(62 * escala))
-    d.text((int(80 * escala), int(70 * escala)), "LLAMAMIENTO", font=f_top, fill=AMARILLO)
-    d.text((int(80 * escala), int(130 * escala)), "23:59", font=f_big, fill=CREMA)
-    d.text((int(80 * escala), int(400 * escala)), subtitulo, font=f_sub, fill=CREMA)
-    d.text((int(80 * escala), int(490 * escala)), linea2, font=f_sub, fill=AMARILLO)
+    f_sub = fuente_ajustada(subtitulo, int(62 * escala), FUENTES)
+    f_sub2 = fuente_ajustada(linea2, int(62 * escala), FUENTES)
+    d.text((margen, int(70 * escala)), "LLAMAMIENTO", font=f_top, fill=AMARILLO)
+    d.text((margen, int(130 * escala)), "23:59", font=f_big, fill=CREMA)
+    d.text((margen, int(410 * escala)), subtitulo, font=f_sub, fill=CREMA)
+    d.text((margen, int(505 * escala)), linea2, font=f_sub2, fill=AMARILLO)
     img.save(SALIDA / nombre, "PNG")
 
 
