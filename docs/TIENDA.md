@@ -119,6 +119,13 @@ Además: Printify cambió en 2025 el modelo de cobro de su Pop-Up (el vendedor p
 
 ## 10. Cambios previstos (fase 2)
 
+**Pendiente inmediato (respuesta del titular del 11-09-2026):** el titular eligió que **el agente abra la cuenta POD hasta el paso de verificación** y que él meta el código. Para arrancar faltan dos datos:
+
+1. **Email con el que se abre la tienda** (será el email de avisos de pedidos y el de contacto de la web).
+2. **Dominio confirmado**, para generar el `CNAME` y concretar los registros de `DNS.md`.
+
+Cuando lleguen, el registro se hace en `auth.fourthwall.com` (email + contraseña). La contraseña **nunca** la escribe el agente ni se pega en el chat: se guarda con el gestor de contraseñas de Hermes cuando el titular esté delante para autorizarlo. Después queda la verificación por email, que también es del titular.
+
 1. El humano genera el arte y lo deja en `/designs` con la nomenclatura del BRIEF.
 2. Se crea la cuenta POD, se suben los 24 productos con mockups oficiales y se copian las URLs.
 3. Se pegan las URLs en `data/disenos.json`, se marca `estado: listo` y se ejecuta `python build.py --check && bash scripts/publish.sh`.
