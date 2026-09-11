@@ -36,6 +36,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 RAIZ = Path(__file__).resolve().parent.parent
 DISENOS_DIR = RAIZ / "designs"
+ILUSTRACIONES = DISENOS_DIR / "_ilustraciones"
 
 MASTER = (4500, 5400)
 AREAS = {
@@ -325,6 +326,66 @@ TEXTO_TASA = {
 
 
 # --------------------------------------------------------------------------
+# ilustración del personaje: se recorta el círculo y se pega sobre el texto
+# --------------------------------------------------------------------------
+def capa_ilustracion(slug: str) -> Image.Image | None:
+    """Devuelve el círculo ilustrado con transparencia, recortado y limpio.
+
+    El recorte es geométrico (elipse sobre la caja del círculo crema), no por color:
+    así el contorno oscuro del dibujo no se pierde ni queda un halo negro alrededor.
+    """
+    origen = ILUSTRACIONES / f"{slug}.png"
+    if not origen.exists():
+        return None
+    from PIL import ImageFilter
+
+    im = Image.open(origen).convert("RGBA")
+    r, g, b = im.convert("RGB").split()
+    crema = b.point(lambda v: 255 if v > 170 else 0)          # zona clara = círculo
+    caja = crema.getbbox()
+    if caja is None:
+        return None
+    # margen de seguridad para incluir lo que el personaje tapa del círculo
+    izq, arriba, der, abajo = caja
+    im = im.crop((max(0, izq - 6), max(0, arriba - 6), min(im.width, der + 6), min(im.height, abajo + 6)))
+
+    mascara = Image.new("L", im.size, 0)
+    ImageDraw.Draw(mascara).ellipse((1, 1, im.width - 2, im.height - 2), fill=255)
+    mascara = mascara.filter(ImageFilter.GaussianBlur(2))
+    im.putalpha(mascara)
+    return im
+
+
+def composicion_ilustrada(capa, modo, slug) -> None:
+    """Personaje dentro del círculo crema arriba y la frase debajo.
+
+    Cada línea se ajusta a su propio cuerpo: las frases cortas salen grandes y las
+    largas más pequeñas, en vez de encogerlo todo al tamaño de la línea más larga.
+    """
+    lineas = TEXTO_TASA[slug][0]
+    p = paleta(modo)
+    ilustracion = capa_ilustracion(slug)
+    alto_badge = 2700
+    y_badge = 340
+    if ilustracion:
+        escala = alto_badge / ilustracion.height
+        badge = ilustracion.resize((int(ilustracion.width * escala), alto_badge), Image.LANCZOS)
+        capa.alpha_composite(badge, ((W - badge.width) // 2, y_badge))
+        y_texto = 3400
+    else:
+        y_texto = 1500
+
+    d = ImageDraw.Draw(capa)
+    ancho_max = W - 900
+    fuentes = [fuente_ajustada(d, l, FUENTE_DISPLAY, 560, ancho_max) for l in lineas]
+    colores = [p["principal"], p["acento"]]
+    y = y_texto
+    for i, (linea, f) in enumerate(zip(lineas, fuentes)):
+        texto_centrado(d, y, linea, f, colores[i % 2], W)
+        y += int(f.size * 1.02)
+
+
+# --------------------------------------------------------------------------
 # variante horizontal para la taza (siempre sobre taza blanca: modo claro)
 # --------------------------------------------------------------------------
 def composicion_taza(slug: str, ancho: int, alto: int) -> Image.Image:
@@ -337,6 +398,27 @@ def composicion_taza(slug: str, ancho: int, alto: int) -> Image.Image:
     capa = Image.new("RGBA", (ancho, alto), (0, 0, 0, 0))
     d = ImageDraw.Draw(capa)
     margen = 180
+
+    # Si hay ilustración, la taza lleva el círculo del personaje a la izquierda
+    ilustracion = capa_ilustracion(slug)
+    if ilustracion is not None:
+        alto_badge = min(alto - margen, 820)
+        escala = alto_badge / ilustracion.height
+        badge = ilustracion.resize((int(ilustracion.width * escala), alto_badge), Image.LANCZOS)
+        capa.alpha_composite(badge, (margen, (alto - badge.height) // 2))
+        zona_izq = margen + badge.width + 120
+        ancho_texto = ancho - zona_izq - margen
+        f1 = fuente_ajustada(d, lineas[0], FUENTE_DISPLAY, 200, ancho_texto)
+        f2 = fuente_ajustada(d, lineas[1], FUENTE_DISPLAY, 200, ancho_texto)
+        f = fuente(FUENTE_DISPLAY, min(f1.size, f2.size))
+        cuerpo = f.size
+        y = alto // 2 - int(cuerpo * 1.05)
+        for i, linea in enumerate(lineas):
+            a, _, caja = medir(d, linea, f)
+            d.text((zona_izq + (ancho - zona_izq - a) // 2 - caja[0], y + i * int(cuerpo * 1.06)),
+                   linea, font=f, fill=hexa(NEGRO if i == 0 else ROJO))
+        return capa
+
     zona_izq = int(ancho * 0.40)
     centro_graf = margen + (zona_izq - 2 * margen) // 2
     # altura de reloj que cabe en la zona gráfica (4 dígitos + 3 separadores)
@@ -410,17 +492,20 @@ def vista_previa(master: Image.Image, slug: str) -> Image.Image:
     return lienzo
 
 
-def info_md(slug: str, lineas: list[str], colores: list[str]) -> str:
+def info_md(slug: str, lineas: list[str], colores: list[str], con_ilustracion: bool) -> str:
     return "\n".join([
         f"# {slug}",
         "",
-        "Generado con `python scripts/disenos.py` (Pillow, sin IA para el texto).",
+        "Generado con `python scripts/disenos.py`.",
         "",
         "## Reglas aplicadas",
         "",
+        *(["- Ilustración de personaje en círculo crema (estilo plano, contorno grueso, tres colores).",
+           "  El recorte es geométrico: sin halo negro ni bordes sucios al estampar."] if con_ilustracion else
+          ["- Composición tipográfica con elementos geométricos, sin ilustración."]),
         "- La frase está compuesta con **tipografía real** (Arial Black / Segoe UI Black / Consolas Bold).",
         "  Las letras generadas por modelos de imagen se deforman y en una camiseta se ven a un metro.",
-        "- Geometría vectorial dibujada a 300 dpi: bordes nítidos, sin halo ni artefactos de compresión.",
+        "- Geometría vectorial dibujada a 300 dpi: bordes nítidos, sin artefactos de compresión.",
         "- **Dos variantes de color**: una para prenda oscura y otra para producto claro.",
         "  Subir la clara a un tote crudo o a una taza blanca haría desaparecer el diseño.",
         "",
@@ -452,6 +537,7 @@ def info_md(slug: str, lineas: list[str], colores: list[str]) -> str:
 
 def main() -> None:
     solo = sys.argv[sys.argv.index("--solo") + 1] if "--solo" in sys.argv else None
+    estilo = sys.argv[sys.argv.index("--estilo") + 1] if "--estilo" in sys.argv else "ilustracion"
     datos = json.loads((RAIZ / "data" / "disenos.json").read_text(encoding="utf-8"))
     hechos = 0
     for d in datos:
@@ -464,7 +550,10 @@ def main() -> None:
         capas = {}
         for modo in ("oscuro", "claro"):
             capa = Image.new("RGBA", MASTER, (0, 0, 0, 0))
-            COMPOSICIONES[slug](capa, modo)
+            if estilo == "ilustracion" and capa_ilustracion(slug) is not None:
+                composicion_ilustrada(capa, modo, slug)
+            else:
+                COMPOSICIONES[slug](capa, modo)
             capas[modo] = capa
 
         capas["oscuro"].save(carpeta / "master.png", dpi=(300, 300))
@@ -474,7 +563,10 @@ def main() -> None:
         encajar(capas["claro"], AREAS["tote"], 0.80, 0.42).save(carpeta / "print-area-tote.png", dpi=(300, 300))
         composicion_taza(slug, *AREAS["taza"]).save(carpeta / "print-area-taza.png", dpi=(300, 300))
         vista_previa(capas["oscuro"], slug).save(carpeta / "mockup-web.webp", "WEBP", quality=88, method=6)
-        (carpeta / "INFO.md").write_text(info_md(slug, d["texto_camiseta"].split("\n"), d["paleta"]), encoding="utf-8")
+        con_ilus = estilo == "ilustracion" and capa_ilustracion(slug) is not None
+        (carpeta / "INFO.md").write_text(
+            info_md(slug, d["texto_camiseta"].split("\n"), d["paleta"], con_ilus), encoding="utf-8"
+        )
         hechos += 1
         print("compuesto:", slug)
 

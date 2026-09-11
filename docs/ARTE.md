@@ -3,12 +3,17 @@
 ## Resumen
 
 Los **8 diseños están compuestos y listos para imprimir** (`designs/<slug>/`, 7 archivos por diseño,
-56 en total, 7,5 MB). Están generados con tipografía real y geometría vectorial a 300 dpi mediante
-`scripts/disenos.py`, y validados con `scripts/qa_disenos.py`.
+56 en total). Cada uno lleva un **personaje ilustrado dentro de un círculo crema** y la frase debajo
+compuesta con tipografía real a 300 dpi. Se generan con `scripts/disenos.py`, se validan con
+`scripts/qa_disenos.py` y los prompts de los personajes están en `designs/PROMPTS_ILUSTRACIONES.md`.
 
-**No llevan texto generado por IA.** Y no es una limitación, es la decisión correcta: en estos 8 diseños
-la frase *es* el diseño, y los modelos de imagen escriben mal las frases largas. Un error de una letra se
-ve a un metro de distancia en una camiseta.
+**Primera versión (descartada):** se entregaron los 8 diseños solo con tipografía y geometría. El titular
+lo rechazó con razón: le faltaba la gracia del dibujo. Esta segunda versión añade el personaje; el motor
+tipográfico se mantiene porque las frases se siguen componiendo con letras de verdad.
+
+**El texto nunca lo genera la IA.** En estos 8 diseños la frase es la mitad del chiste y los modelos de
+imagen escriben mal las frases largas: un error de una letra se ve a un metro de distancia en una camiseta.
+
 
 ## Qué ha pasado con Fooocus
 

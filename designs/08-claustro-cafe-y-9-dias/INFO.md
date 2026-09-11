@@ -1,12 +1,14 @@
 # 08-claustro-cafe-y-9-dias
 
-Generado con `python scripts/disenos.py` (Pillow, sin IA para el texto).
+Generado con `python scripts/disenos.py`.
 
 ## Reglas aplicadas
 
+- Ilustración de personaje en círculo crema (estilo plano, contorno grueso, tres colores).
+  El recorte es geométrico: sin halo negro ni bordes sucios al estampar.
 - La frase está compuesta con **tipografía real** (Arial Black / Segoe UI Black / Consolas Bold).
   Las letras generadas por modelos de imagen se deforman y en una camiseta se ven a un metro.
-- Geometría vectorial dibujada a 300 dpi: bordes nítidos, sin halo ni artefactos de compresión.
+- Geometría vectorial dibujada a 300 dpi: bordes nítidos, sin artefactos de compresión.
 - **Dos variantes de color**: una para prenda oscura y otra para producto claro.
   Subir la clara a un tote crudo o a una taza blanca haría desaparecer el diseño.
 
