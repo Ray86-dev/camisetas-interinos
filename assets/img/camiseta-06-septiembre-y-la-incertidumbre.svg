@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Placeholder de Camiseta unisex para el diseño Septiembre, yo y la incertidumbre">
+<rect width="800" height="1000" fill="#F4EFE6"/>
+<rect x="20" y="20" width="760" height="960" fill="none" stroke="#111111" stroke-width="3"/>
+<text x="60" y="110" font-family="ui-monospace, monospace" font-size="26" fill="#B23A2E">CAMISETA UNISEX</text>
+<text x="60" y="150" font-family="ui-monospace, monospace" font-size="20" fill="#5A5A5A">diseño 06 · 06-septiembre-y-la-incertidumbre</text>
+<text x="60" y="330" font-family="system-ui, sans-serif" font-size="58" font-weight="800" fill="#111111"><tspan x="60" dy="0">SEPTIEMBRE, YO</tspan><tspan x="60" dy="68">Y LA INCERTIDUMBRE</tspan></text>
+<text x="60" y="700" font-family="ui-monospace, monospace" font-size="22" fill="#0E1B2A">ILUSTRACIÓN PLACEHOLDER</text>
+<text x="60" y="740" font-family="system-ui, sans-serif" font-size="22" fill="#111111">El mockup real lo genera la plataforma POD</text>
+<text x="60" y="772" font-family="system-ui, sans-serif" font-size="22" fill="#111111">cuando el imprimible exista en /designs.</text>
+<text x="60" y="860" font-family="ui-monospace, monospace" font-size="20" fill="#5A5A5A">plantilla: 3000×3600 px @300 dpi (área de pecho, 25×30 cm aprox.)</text>
+<text x="60" y="900" font-family="ui-monospace, monospace" font-size="20" fill="#5A5A5A">precio previsto: 22,90 €</text>
+</svg>

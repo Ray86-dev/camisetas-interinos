@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /_borrador/
+Sitemap: https://ray86-dev.github.io/camisetas-interinos/sitemap.xml

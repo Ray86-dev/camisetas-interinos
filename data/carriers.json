@@ -1,0 +1,68 @@
+{
+  "_nota": "Mapa de carriers reales. La tienda NUNCA llama «Correos» a un envío que no sea Correos: usa el carrier real del POD y su enlace de seguimiento. Ver docs/RUNBOOK_PEDIDO.md.",
+  "carriers": [
+    {
+      "id": "correos",
+      "nombre": "Correos",
+      "url": "https://api.correos.es/tracking/?id={code}",
+      "url_alt": "https://www.correos.es/es/es/herramientas/localizador/envios?numero={code}",
+      "ambito": "España, incluida Canarias",
+      "notas": "En Canarias el despacho aduanero (DUA/IGIC) lo gestiona Correos y puede facturarse al destinatario."
+    },
+    {
+      "id": "correos-express",
+      "nombre": "Correos Express",
+      "url": "https://www.correosexpress.com/web/correosexpress/tracking?codigo={code}",
+      "ambito": "España peninsular y Canarias",
+      "notas": "Puede requerir alta de NIF del destinatario para el DUA en Canarias."
+    },
+    {
+      "id": "dhl",
+      "nombre": "DHL",
+      "url": "https://www.dhl.com/es-es/home/tracking.html?tracking-id={code}",
+      "ambito": "Europa y Canarias",
+      "notas": "Carrier habitual de las rutas DDP del POD: el arancel/IGIC puede ir ya cobrado en el checkout."
+    },
+    {
+      "id": "gls",
+      "nombre": "GLS",
+      "url": "https://gls-group.eu/ES/es/seguimiento-de-paquetes?match={code}",
+      "ambito": "Europa y Canarias",
+      "notas": "GLS cobra al destinatario los gastos de despacho del DUA cuando el envío va DDU."
+    },
+    {
+      "id": "seur",
+      "nombre": "SEUR",
+      "url": "https://www.seur.com/livetracking/?segOnlineIdentifier={code}",
+      "ambito": "España",
+      "notas": ""
+    },
+    {
+      "id": "ctt",
+      "nombre": "CTT Express",
+      "url": "https://www.cttexpress.com/localizador-de-envios/?ref={code}",
+      "ambito": "España",
+      "notas": ""
+    },
+    {
+      "id": "ups",
+      "nombre": "UPS",
+      "url": "https://www.ups.com/track?loc=es_ES&tracknum={code}",
+      "ambito": "Internacional",
+      "notas": ""
+    },
+    {
+      "id": "fedex",
+      "nombre": "FedEx",
+      "url": "https://www.fedex.com/fedextrack/?trknbr={code}&locale=es_ES",
+      "ambito": "Internacional",
+      "notas": ""
+    }
+  ],
+  "estados": [
+    { "id": "pagado", "etiqueta": "Pagado", "orden": 1, "texto": "Hemos recibido tu pago y el pedido ya está registrado." },
+    { "id": "en_produccion", "etiqueta": "En producción", "orden": 2, "texto": "Tu prenda se imprime bajo demanda. No hay stock: se fabrica ahora." },
+    { "id": "enviado", "etiqueta": "Enviado", "orden": 3, "texto": "Tu pedido ha salido del taller y va camino de tu casa." },
+    { "id": "entregado", "etiqueta": "Entregado", "orden": 4, "texto": "El carrier marca el pedido como entregado." }
+  ]
+}

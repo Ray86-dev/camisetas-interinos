@@ -1,0 +1,28 @@
+{
+  "_esquema": {
+    "pedido": "Número de pedido tal cual se lo dimos al cliente (ej. LL-1042). Se compara en mayúsculas y sin espacios.",
+    "email": "Email usado en la compra. Se compara en minúsculas. Ejemplo obligatorio: coincide con el email del pedido.",
+    "estado": "pagado | en_produccion | enviado | entregado",
+    "carrier": "id de data/carriers.json (correos, correos-express, dhl, gls, seur, ctt, ups, fedex)",
+    "tracking": "Número de seguimiento real del carrier. Vacío mientras no exista.",
+    "fecha_pedido": "ISO 8601",
+    "fecha_envio": "ISO 8601 o null",
+    "destino": "canarias | peninsula",
+    "nota": "Texto opcional visible por el cliente (retrasos, incidencias).",
+    "demo": "true solo en filas de prueba. La web las marca como EJEMPLO DE PRUEBA."
+  },
+  "pedidos": [
+    {
+      "pedido": "DEMO-0000",
+      "email": "demo@ejemplo.com",
+      "estado": "enviado",
+      "carrier": "correos-express",
+      "tracking": "0000000000000000000",
+      "fecha_pedido": "2026-09-11T20:15:00+01:00",
+      "fecha_envio": "2026-09-14T09:30:00+01:00",
+      "destino": "canarias",
+      "nota": "Fila de ejemplo: así verá el cliente su pedido cuando el POD nos dé el tracking.",
+      "demo": true
+    }
+  ]
+}
