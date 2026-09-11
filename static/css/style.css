@@ -74,11 +74,32 @@ a:hover { color: var(--negro); }
 .nav a { text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--negro); padding: .35rem 0; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--rojo); text-decoration: underline; }
 .carrito-link { border: var(--borde); padding: .3rem .6rem !important; border-radius: var(--radio); }
+
+/* Menú móvil: en pantallas pequeñas la navegación se pliega tras un botón */
+.menu-check { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.menu-btn {
+  display: inline-block; border: var(--borde); border-radius: var(--radio);
+  padding: .35rem .7rem; font-weight: 700; cursor: pointer; order: 3;
+}
+.menu-btn::after { content: " ▾"; }
+.menu-check:checked ~ nav { display: block; flex-basis: 100%; }
+.menu-check:checked ~ .menu-btn::after { content: " ▴"; }
+.menu-check:focus-visible ~ .menu-btn { outline: 3px solid var(--rojo); outline-offset: 2px; }
+.site-header nav { display: none; flex-basis: 100%; }
+.site-header .nav { flex-direction: column; align-items: flex-start; gap: .1rem; padding-bottom: .5rem; }
+.site-header .nav a { display: block; width: 100%; padding: .5rem 0; border-top: 1px solid var(--crema-2); }
+@media (min-width: 760px) {
+  .menu-btn { display: none; }
+  .site-header nav { display: block; flex-basis: auto; }
+  .site-header .nav { flex-direction: row; align-items: center; gap: .35rem .9rem; padding-bottom: 0; }
+  .site-header .nav a { border-top: 0; width: auto; padding: .35rem 0; }
+}
 .carrito-link[data-count]:not([data-count="0"])::after { content: " (" attr(data-count) ")"; }
 
 /* ---------- Tipografía ---------- */
 h1, h2, h3 { line-height: 1.08; letter-spacing: -.02em; margin: 0 0 .6rem; font-weight: 800; }
 h1 { font-size: clamp(2rem, 7vw, 3.6rem); text-transform: uppercase; }
+h1 span { display: block; }
 h2 { font-size: clamp(1.5rem, 4.5vw, 2.2rem); }
 h3 { font-size: clamp(1.15rem, 3vw, 1.4rem); }
 p { margin: 0 0 1rem; }
@@ -115,7 +136,7 @@ section:last-of-type { border-bottom: 0; }
   display: inline-block; font-weight: 700; text-decoration: none; text-align: center;
   padding: .8rem 1.2rem; border: var(--borde); border-radius: var(--radio);
   background: var(--negro); color: var(--crema); cursor: pointer; font-size: 1rem;
-  font-family: var(--sans); min-height: 44px;
+  font-family: var(--sans); min-height: 44px; line-height: 1.2;
 }
 .btn:hover { background: var(--rojo); color: var(--crema); }
 .btn-2 { background: transparent; color: var(--negro); }
@@ -206,13 +227,16 @@ details .faq-body { padding: .9rem 1rem; }
 
 /* ---------- Cookies ---------- */
 #cookies {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
-  background: var(--negro); color: var(--crema); padding: .9rem 1rem;
-  display: none; gap: .75rem; align-items: center; flex-wrap: wrap;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  background: var(--negro); color: var(--crema); padding: 1rem;
+  border-top: 4px solid var(--rojo);
+  display: none; flex-direction: column; gap: .6rem;
+  max-height: 78vh; overflow-y: auto;
 }
 #cookies.visible { display: flex; }
-#cookies p { margin: 0; flex: 1 1 22rem; font-size: .92rem; }
-#cookies .btn { background: var(--crema); color: var(--negro); border-color: var(--crema); }
+#cookies p { margin: 0; font-size: .92rem; max-width: 60ch; }
+#cookies .acciones { display: flex; gap: .6rem; flex-wrap: wrap; }
+#cookies .btn { background: var(--crema); color: var(--negro); border-color: var(--crema); flex: 1 1 8rem; }
 #cookies .btn-2 { background: transparent; color: var(--crema); border-color: var(--crema); }
 
 /* ---------- utilidades ---------- */

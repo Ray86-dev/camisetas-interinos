@@ -199,6 +199,8 @@ def layout(titulo: str, descripcion: str, ruta_actual: str, cuerpo: str, noindex
 <header class="site-header">
   <div class="wrap">
     <a class="logo" href="{ruta('/') or '/'}"><span class="reloj">23:59</span> {esc(MARCA)}</a>
+    <input type="checkbox" id="menu-abierto" class="menu-check" aria-label="Abrir o cerrar el menú">
+    <label class="menu-btn" for="menu-abierto">Menú</label>
     <nav aria-label="Principal">
       <ul class="nav">
         {nav}
@@ -240,8 +242,10 @@ def layout(titulo: str, descripcion: str, ruta_actual: str, cuerpo: str, noindex
 </footer>
 <div id="cookies" data-ga="{esc(ga)}" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
   <p>Usamos solo cookies técnicas necesarias para que la tienda funcione. Si aceptas, activamos además analítica anónima para saber qué diseños interesan. Puedes rechazarla y seguir comprando igual.</p>
-  <button class="btn" data-cookie="todo">Aceptar</button>
-  <button class="btn btn-2" data-cookie="tecnica">Solo técnicas</button>
+  <div class="acciones">
+    <button class="btn" data-cookie="todo">Aceptar</button>
+    <button class="btn btn-2" data-cookie="tecnica">Solo técnicas</button>
+  </div>
 </div>
 <script src="{ruta('/assets/js/app.js')}" defer></script>
 </body>
@@ -341,7 +345,7 @@ def pagina_inicio() -> str:
   <div class="wrap hero-grid">
     <div>
       <span class="tag tag-azul mono">Canarias · interinos · Primaria y Secundaria</span>
-      <h1>Sigo en<br>lista de espera</h1>
+      <h1><span>Sigo en</span><span>lista de espera</span></h1>
       <p class="lead">{esc(SITE['claim_home'])}</p>
       <div class="btn-row">
         <a class="btn" href="{ruta('/catalogo/')}">Ver catálogo</a>
@@ -384,7 +388,7 @@ def pagina_inicio() -> str:
           {esc(CANARIAS['nota'])}</p>
         </div>
         <div class="aviso aviso-azul">
-          <p><strong>Penasula {PENINSULA['min_dias']}–{PENINSULA['max_dias']} días.</strong> {esc(PENINSULA['nota'])}</p>
+          <p><strong>Península: {PENINSULA['min_dias']}–{PENINSULA['max_dias']} días.</strong> {esc(PENINSULA['nota'])}</p>
         </div>
         <p class="small">{esc(SITE['envio']['texto_canarias'])}</p>
       </div>
@@ -700,7 +704,7 @@ def pagina_seguimiento() -> str:
         <input id="email" name="email" type="email" placeholder="tu@email.com" autocomplete="email" required>
       </div>
       <div class="form-row">
-        <button class="btn" type="submit">Ver estado</button>
+        <button class="btn btn-block" type="submit">Ver estado</button>
       </div>
     </form>
     <div id="seguimiento-resultado" aria-live="polite"></div>
