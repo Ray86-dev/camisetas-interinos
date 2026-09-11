@@ -504,8 +504,11 @@ def pagina_producto(ficha: dict) -> str:
   </div>
 </section>
 """
+    titulo_pagina = f"{p['nombre']} · {d['titulo']}"
+    if MARCA not in titulo_pagina:
+        titulo_pagina += f" · {MARCA}"
     return layout(
-        f"{ficha['titulo']} · {MARCA}",
+        titulo_pagina,
         f"{d['titulo']} en {p['nombre'].lower()}. {eur(ficha['precio'])} IVA incluido. Impresión bajo demanda y envío a Canarias en {CANARIAS['min_dias']}-{CANARIAS['max_dias']} días.",
         ficha["url"],
         cuerpo,
