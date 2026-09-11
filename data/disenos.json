@@ -1,0 +1,130 @@
+[
+  {
+    "slug": "01-sigo-en-lista-de-espera",
+    "numero": 1,
+    "titulo": "Sigo en lista de espera",
+    "texto_camiseta": "SIGO EN LISTA\nDE ESPERA",
+    "paleta": [
+      "#111111",
+      "#F4EFE6",
+      "#B23A2E"
+    ],
+    "estilo": "flat bold typography, sello/etiqueta administrativa ironizada",
+    "estado": "pendiente_arte",
+    "arte_master": "designs/01-sigo-en-lista-de-espera/master.png",
+    "notas_arte": "Dos líneas centradas, mayúsculas, caja alta. El chiste está en el formato de sello, no en el dibujo.",
+    "checkout_url": ""
+  },
+  {
+    "slug": "02-mi-destino-es-un-pdf",
+    "numero": 2,
+    "titulo": "Mi destino es un PDF",
+    "texto_camiseta": "MI DESTINO\nES UN PDF",
+    "paleta": [
+      "#0E1B2A",
+      "#F4EFE6",
+      "#E4C56B"
+    ],
+    "estilo": "tipografía bold, guiño a icono de documento plano (sin logos ni papelería oficial)",
+    "estado": "pendiente_arte",
+    "arte_master": "designs/02-mi-destino-es-un-pdf/master.png",
+    "notas_arte": "Interlineado cerrado. Máximo 2 líneas. Sin textura de papel oficial ni membretes.",
+    "checkout_url": ""
+  },
+  {
+    "slug": "03-llamamiento-2359",
+    "numero": 3,
+    "titulo": "Llamamiento 23:59",
+    "texto_camiseta": "LLAMAMIENTO\n23:59",
+    "paleta": [
+      "#111111",
+      "#F4EFE6",
+      "#B23A2E"
+    ],
+    "estilo": "reloj digital / display de móvil, tipografía de 7 segmentos",
+    "estado": "pendiente_arte",
+    "arte_master": "designs/03-llamamiento-2359/master.png",
+    "notas_arte": "El reloj es el diseño estrella de la marca. Cero iconografía institucional.",
+    "checkout_url": ""
+  },
+  {
+    "slug": "04-interino-es-un-cardio",
+    "numero": 4,
+    "titulo": "Interino: no es un estado, es un cardio",
+    "texto_camiseta": "INTERINO: NO ES UN ESTADO,\nES UN CARDIO",
+    "paleta": [
+      "#111111",
+      "#F4EFE6",
+      "#7A8B99"
+    ],
+    "estilo": "bloque de texto editorial, acento subrayado a mano",
+    "estado": "pendiente_arte",
+    "arte_master": "designs/04-interino-es-un-cardio/master.png",
+    "notas_arte": "Trazo de subrayado imperfecto hecho a mano alzada digital. Nada de electrocardiograma literal si ensucia.",
+    "checkout_url": ""
+  },
+  {
+    "slug": "05-visto-a-las-347",
+    "numero": 5,
+    "titulo": "Visto a las 3:47",
+    "texto_camiseta": "VISTO\nA LAS 3:47",
+    "paleta": [
+      "#0E1B2A",
+      "#F4EFE6",
+      "#8FB8DE"
+    ],
+    "estilo": "sello de hora con tinta azul noche, tipografía monoespaciada",
+    "estado": "pendiente_arte",
+    "arte_master": "designs/05-visto-a-las-347/master.png",
+    "notas_arte": "Texto revisado desde «Visto por la Consejería a las 3:47»: se elimina toda referencia a un organismo concreto. Se mantiene el chiste de la hora intempestiva.",
+    "checkout_url": ""
+  },
+  {
+    "slug": "06-septiembre-y-la-incertidumbre",
+    "numero": 6,
+    "titulo": "Septiembre, yo y la incertidumbre",
+    "texto_camiseta": "SEPTIEMBRE, YO\nY LA INCERTIDUMBRE",
+    "paleta": [
+      "#111111",
+      "#F4EFE6",
+      "#C97B4A"
+    ],
+    "estilo": "cartel de temporada, tipografía grande con jerarquía de tres pesos",
+    "estado": "pendiente_arte",
+    "arte_master": "designs/06-septiembre-y-la-incertidumbre/master.png",
+    "notas_arte": "Fondo negro, texto crema, «incertidumbre» en rojo apagado.",
+    "checkout_url": ""
+  },
+  {
+    "slug": "07-funcionario-de-carrera-no",
+    "numero": 7,
+    "titulo": "¿Funcionario de carrera? En esta vida no",
+    "texto_camiseta": "¿FUNCIONARIO DE CARRERA?\nEN ESTA VIDA NO",
+    "paleta": [
+      "#111111",
+      "#F4EFE6",
+      "#B23A2E"
+    ],
+    "estilo": "pregunta en tipografía bold + respuesta en caja baja, broma tipográfica",
+    "estado": "pendiente_arte",
+    "arte_master": "designs/07-funcionario-de-carrera-no/master.png",
+    "notas_arte": "Los signos de apertura «¿» son parte del diseño: se mantienen en español.",
+    "checkout_url": ""
+  },
+  {
+    "slug": "08-claustro-cafe-y-9-dias",
+    "numero": 8,
+    "titulo": "Claustro, café y un contrato de 9 días",
+    "texto_camiseta": "CLAUSTRO, CAFÉ\nY UN CONTRATO DE 9 DÍAS",
+    "paleta": [
+      "#0E1B2A",
+      "#F4EFE6",
+      "#E4C56B"
+    ],
+    "estilo": "lista de tres elementos con vinetas, tono de recibo de cafetería",
+    "estado": "pendiente_arte",
+    "arte_master": "designs/08-claustro-cafe-y-9-dias/master.png",
+    "notas_arte": "Tres líneas cortas o dos. Sin nombres de centros ni de personas.",
+    "checkout_url": ""
+  }
+]

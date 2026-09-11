@@ -1,0 +1,48 @@
+{
+  "marca": "Llamamiento 23:59",
+  "marca_alt_consideradas": ["Lista de espera", "Interinidad Canaria"],
+  "lema": "Merch de tribu para quien vive del llamamiento",
+  "claim_home": "Camisetas, totes y tazas para la gente que sabe lo que es mirar el móvil a las 23:59.",
+  "idioma": "es-ES",
+  "moneda": "EUR",
+  "dominio_previsto": "PENDIENTE-CONFIRMAR",
+  "url_publicada": "https://ray86-dev.github.io/camisetas-interinos/",
+  "url_tienda_pod": "",
+  "checkout_activo": false,
+  "email_contacto": "hola@PENDIENTE-CONFIRMAR",
+  "respuesta_horas": 24,
+  "responsable": {
+    "nombre": "[NOMBRE Y APELLIDOS]",
+    "nif": "[NIF]",
+    "direccion": "[DIRECCIÓN FISCAL COMPLETA]",
+    "email": "[EMAIL DE CONTACTO]",
+    "pais": "España"
+  },
+  "plazos": {
+    "produccion_dias": [3, 5],
+    "canarias": {
+      "min_dias": 6,
+      "max_dias": 14,
+      "nota": "Producción 3-5 días laborables + transporte a islas. Los envíos a Canarias pasan por despacho aduanero (DUA/IGIC) en destino."
+    },
+    "peninsula": {
+      "min_dias": 5,
+      "max_dias": 9,
+      "nota": "Producción 3-5 días laborables + transporte peninsular."
+    }
+  },
+  "envio": {
+    "texto_canarias": "Imprimimos en Barcelona y en otros talleres de la Unión Europea según disponibilidad. A Canarias no siempre llega por Correos: el carrier depende del taller y de la ruta. Si no es Correos, te damos el número y el enlace del carrier real.",
+    "gratis_desde_eur": 60
+  },
+  "analytics": {
+    "ga_measurement_id": "",
+    "nota": "Sin ID la web se publica igual: la analítica es opcional y no bloquea el lanzamiento."
+  },
+  "redes": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": ""
+  },
+  "aviso_demo": true
+}

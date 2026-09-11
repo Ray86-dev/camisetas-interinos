@@ -1,0 +1,29 @@
+{
+  "_nota": "Productos PLACEHOLDER. No se publican en la tienda en vivo: se renderizan solo en /_borrador/ (noindex, sin enlaces desde el sitio) y se borran cuando existan los PNG reales en /designs. Regla de la fase 1: NO vender un diseño vacío.",
+  "placeholders": [
+    {
+      "id": "ph-camiseta",
+      "tipo": "camiseta",
+      "titulo": "Camiseta (diseño en camino)",
+      "estado": "PROXIMAMENTE",
+      "precio_eur": 22.9,
+      "texto": "PRÓXIMAMENTE"
+    },
+    {
+      "id": "ph-tote",
+      "tipo": "tote",
+      "titulo": "Tote bag (diseño en camino)",
+      "estado": "PROXIMAMENTE",
+      "precio_eur": 17.9,
+      "texto": "PRÓXIMAMENTE"
+    },
+    {
+      "id": "ph-taza",
+      "tipo": "taza",
+      "titulo": "Taza (diseño en camino)",
+      "estado": "PROXIMAMENTE",
+      "precio_eur": 15.9,
+      "texto": "PRÓXIMAMENTE"
+    }
+  ]
+}

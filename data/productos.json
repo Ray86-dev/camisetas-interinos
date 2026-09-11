@@ -1,0 +1,41 @@
+[
+  {
+    "id": "camiseta",
+    "nombre": "Camiseta unisex",
+    "nombre_largo": "Camiseta unisex de algodón orgánico (estampado DTG)",
+    "precio_eur": 22.9,
+    "coste_base_eur_ref": 12.5,
+    "coste_base_fuente": "Catálogo Fourthwall (camiseta unisex DTG). Precio final por talla/color a confirmar en la cuenta; en Free no hay fee de plataforma sobre catálogo.",
+    "tallas": ["S", "M", "L", "XL", "2XL"],
+    "confeccion": "100% algodón peinado y anillado, corte unisex, cuello redondo reforzado. Etiqueta propia no incluida en fase 1.",
+    "print_area": "designs/{slug}/print-area-camiseta.png",
+    "plantilla": "3000×3600 px @300 dpi (área de pecho, 25×30 cm aprox.)",
+    "peso_envio_g": 200
+  },
+  {
+    "id": "tote",
+    "nombre": "Tote bag",
+    "nombre_largo": "Tote bag de algodón con asas largas",
+    "precio_eur": 17.9,
+    "coste_base_eur_ref": 8.5,
+    "coste_base_fuente": "Catálogo Fourthwall (tote de algodón). Confirmar coste final en la cuenta.",
+    "tallas": ["Única"],
+    "confeccion": "Algodón 100%, asas largas, 38×42 cm aprox. Impresión a una cara.",
+    "print_area": "designs/{slug}/print-area-tote.png",
+    "plantilla": "2952×3542 px @300 dpi (área 25×30 cm aprox.)",
+    "peso_envio_g": 140
+  },
+  {
+    "id": "taza",
+    "nombre": "Taza",
+    "nombre_largo": "Taza cerámica blanca 11 oz (325 ml)",
+    "precio_eur": 15.9,
+    "coste_base_eur_ref": 7.5,
+    "coste_base_fuente": "Catálogo Fourthwall (taza cerámica). Confirmar coste final en la cuenta.",
+    "tallas": ["11 oz"],
+    "confeccion": "Cerámica blanca brillante, apta para lavavajillas y microondas por el fabricante.",
+    "print_area": "designs/{slug}/print-area-taza.png",
+    "plantilla": "2475×1155 px @300 dpi (área envolvente 21×9,5 cm aprox.)",
+    "peso_envio_g": 400
+  }
+]

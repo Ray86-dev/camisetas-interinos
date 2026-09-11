@@ -1,0 +1,22 @@
+# Generado
+dist/
+__pycache__/
+*.pyc
+
+# Secretos: NUNCA commitear
+.env
+.env.local
+*.key
+secrets*
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Arte pesado del humano (se sube al POD, no al repo)
+designs/**/master.png
+designs/**/master.tiff
+designs/**/*.psd
+designs/**/*.kra
+designs/**/export/
