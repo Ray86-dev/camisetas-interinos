@@ -787,6 +787,8 @@ def copiar_estaticos() -> None:
     shutil.copytree(ROOT / "static" / "js", DIST / "assets" / "js")
     (DIST / "assets" / "img").mkdir(parents=True)
     (DIST / "data").mkdir(parents=True)
+    if (ROOT / "static" / "img" / "marca").exists():
+        shutil.copytree(ROOT / "static" / "img" / "marca", DIST / "assets" / "img" / "marca")
 
     for ficha in FICHAS:
         (DIST / "assets" / "img" / f"{ficha['id']}.svg").write_text(svg_placeholder(ficha), encoding="utf-8")

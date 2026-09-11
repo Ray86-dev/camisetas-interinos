@@ -10,7 +10,7 @@
   "moneda": "EUR",
   "dominio_previsto": "PENDIENTE-CONFIRMAR",
   "url_publicada": "https://ray86-dev.github.io/camisetas-interinos/",
-  "url_tienda_pod": "",
+  "url_tienda_pod": "https://ray-mga-shop.fourthwall.com",
   "checkout_activo": false,
   "email_contacto": "rayco86@protonmail.com",
   "respuesta_horas": 24,
@@ -50,5 +50,6 @@
     "tiktok": "",
     "youtube": ""
   },
-  "aviso_demo": true
+  "aviso_demo": true,
+  "nota_tienda_pod": "Cuenta Fourthwall creada (rayco86@protonmail.com). Tienda en prelanzamiento protegida con contrasena hasta pulsar Go live. Subdominio pendiente de cambiar a llamamiento2359. Ver docs/PANEL_FOURTHWALL.md"
 }
